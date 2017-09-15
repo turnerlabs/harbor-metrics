@@ -1,0 +1,12 @@
+version: "2"
+services:
+  harbor-metrics-dashboard:
+    build: .
+    image: quay.io/turner/harbor-metrics-dashboard:0.1.0
+    ports:
+    - 80:8080
+    environment:
+      HEALTHCHECK: /hc
+      PORT: 8080
+    env_file:
+    - hidden.env

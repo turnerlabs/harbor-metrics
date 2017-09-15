@@ -1,0 +1,12 @@
+shipments:
+  harbor-metrics:
+    env: dev
+    barge: ent-prod
+    containers:
+    - harbor-metrics-dashboard
+    replicas: 2
+    group: mss
+    property: turner
+    project: turner
+    product: turner
+    enableMonitoring: false
