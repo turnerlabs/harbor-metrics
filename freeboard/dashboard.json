@@ -1,49 +1,50 @@
 {
-	"version": 1,
-	"allow_edit": true,
-	"plugins": [],
-	"panes": [
-		{
-			"title": "Shipment Environments By Barge",
-			"width": 1,
-			"row": {
-				"3": 1,
-				"5": 13,
-				"6": 1
-			},
-			"col": {
-				"3": 1,
-				"5": 1,
-				"6": 6
-			},
-			"col_width": 2,
-			"widgets": [
-				{
-					"type": "jqPlotWidget",
-					"settings": {
-						"id": "shipmentEnvironmentsByBarge",
-						"data": "var result = [];\nresult[0] = [];\ndatasources[\"shipmentEnvironmentsByBarge\"].map(function(item) {\n  objArray = []\n  objArray.push(item.barge);\n  objArray.push(item.count);\n  result[0].push(objArray);\n});\nreturn result;",
-						"options": "{ \n      seriesDefaults: {\n        // Make this a pie chart.\n        renderer: $.jqplot.PieRenderer, \n        rendererOptions: {\n          // Put data labels on the pie slices.\n          // By default, labels show the percentage of the slice.\n          showDataLabels: true\n        }\n      }, \n      legend: { show: true, location: 'e' }\n    }",
-						"chartHeight": 300,
-						"chartWidth": 600,
-						"height": 5
-					}
-				}
-			]
-		}
-	],
-	"datasources": [
-		{
-			"name": "shipmentEnvironmentsByBarge",
-			"type": "JSON",
-			"settings": {
-				"url": "api/shipmentEnvironmentsByBarge",
-				"use_thingproxy": false,
-				"refresh": 3600,
-				"method": "GET",
-				"name": "shipmentEnvironmentsByBarge"
-			}
-		}
-	],
-	"columns": 3
+  "version": 1,
+  "allow_edit": true,
+  "plugins": [],
+  "panes": [
+    {
+      "title": "Shipment Environments By Barge",
+      "width": 1,
+      "row": {
+        "3": 1,
+        "5": 13,
+        "6": 1
+      },
+      "col": {
+        "3": 1,
+        "5": 1,
+        "6": 6
+      },
+      "col_width": 2,
+      "widgets": [
+        {
+          "title": "shipmentEnvironmentsByBarge",
+          "type": "jqPlotWidget",
+          "settings": {
+            "id": "shipmentEnvironmentsByBarge",
+            "data": "var result = [];\nresult[0] = [];\ndatasources[\"shipmentEnvironmentsByBarge\"].map(function(item) {\n  objArray = []\n  objArray.push(item.barge);\n  objArray.push(item.count);\n  result[0].push(objArray);\n});\nreturn result;",
+            "options": "return { \n  seriesDefaults: {\n    // Make this a pie chart.\n    renderer: $.jqplot.PieRenderer, \n    rendererOptions: {\n      // Put data labels on the pie slices.\n      // By default, labels show the percentage of the slice.\n      showDataLabels: true\n    }\n  }, \n  legend: { show: true, location: 'e' }\n};",
+            "chartHeight": 300,
+            "chartWidth": 600,
+            "height": 5
+          }
+        }
+      ]
+    }
+  ],
+  "datasources": [
+    {
+      "name": "shipmentEnvironmentsByBarge",
+      "type": "JSON",
+      "settings": {
+        "url": "api/shipmentEnvironmentsByBarge",
+        "use_thingproxy": false,
+        "refresh": 3600,
+        "method": "GET",
+        "name": "shipmentEnvironmentsByBarge"
+      }
+    }
+  ],
+  "columns": 3
 }

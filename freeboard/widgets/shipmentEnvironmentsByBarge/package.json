@@ -1,0 +1,14 @@
+{
+  "name": "shipmentEnvironmentsByBarge",
+  "version": "0.1.0",
+  "description": "",
+  "scripts": {
+    "build": "cat ../../dashboard.json | freeboard-jqplot-buildtool > temp && cp temp ../../dashboard.json && rm temp"
+  },
+  "keywords": [],
+  "author": "John Ritsema <john.ritsema@turner.com>",
+  "license": "Apache-2",
+  "devDependencies": {
+    "freeboard-jqplot-buildtool": "^1.1.0"
+  }
+}

@@ -7,8 +7,17 @@ COPY . .
 RUN go get -v github.com/golang/dep/cmd/dep
 RUN dep ensure -v
 
-# compile
+# compile server
 RUN GOOS=linux GOARCH=386 go build -v -o app .
+
+# install node
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
+RUN apt-get install -y nodejs
+
+# build client dashboard widgets
+WORKDIR /go/src/github.com/turnerlabs/harbor-metrics/freeboard/widgets/shipmentEnvironmentsByBarge
+RUN npm install
+RUN npm run build
 ###
 
 
@@ -18,5 +27,6 @@ RUN apk --no-cache add ca-certificates
 WORKDIR /root/
 COPY --from=build /go/src/github.com/turnerlabs/harbor-metrics/app .
 COPY --from=build /go/src/github.com/turnerlabs/harbor-metrics/freeboard ./freeboard
+COPY --from=build /go/src/github.com/turnerlabs/harbor-metrics/freeboard/dashboard.json ./freeboard/dashboard.json
 CMD ["./app"]
 ###
