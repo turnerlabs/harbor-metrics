@@ -4,15 +4,17 @@
   "plugins": [],
   "panes": [
     {
-      "title": "Shipment Environments By Barge",
+      "title": "Barge Size",
       "width": 1,
       "row": {
         "3": 1,
+        "4": 1,
         "5": 13,
         "6": 1
       },
       "col": {
         "3": 1,
+        "4": 1,
         "5": 1,
         "6": 6
       },
@@ -24,6 +26,33 @@
           "settings": {
             "id": "shipmentEnvironmentsByBarge",
             "data": "var result = [];\nresult[0] = [];\ndatasources[\"shipmentEnvironmentsByBarge\"].map(function(item) {\n  objArray = []\n  objArray.push(item.barge);\n  objArray.push(item.count);\n  result[0].push(objArray);\n});\nreturn result;",
+            "options": "return { \n  seriesDefaults: {\n    // Make this a pie chart.\n    renderer: $.jqplot.PieRenderer, \n    rendererOptions: {\n      // Put data labels on the pie slices.\n      // By default, labels show the percentage of the slice.\n      showDataLabels: true\n    }\n  }, \n  legend: { show: true, location: 'e' }\n};",
+            "chartHeight": 300,
+            "chartWidth": 600,
+            "height": 5
+          }
+        }
+      ]
+    },
+    {
+      "title": "Top 10 Groups",
+      "width": 2,
+      "row": {
+        "3": 1,
+        "4": 1
+      },
+      "col": {
+        "3": 3,
+        "4": 3
+      },
+      "col_width": "2",
+      "widgets": [
+        {
+          "title": "shipmentEnvironmentsByGroup",
+          "type": "jqPlotWidget",
+          "settings": {
+            "id": "shipmentEnvironmentsByGroup",
+            "data": "var result = [];\nresult[0] = [];\ndatasources[\"shipmentEnvironmentsByGroup\"].map(function(item) {\n  objArray = []\n  objArray.push(item.group);\n  objArray.push(item.count);\n  result[0].push(objArray);\n});\nreturn result;",
             "options": "return { \n  seriesDefaults: {\n    // Make this a pie chart.\n    renderer: $.jqplot.PieRenderer, \n    rendererOptions: {\n      // Put data labels on the pie slices.\n      // By default, labels show the percentage of the slice.\n      showDataLabels: true\n    }\n  }, \n  legend: { show: true, location: 'e' }\n};",
             "chartHeight": 300,
             "chartWidth": 600,
@@ -44,7 +73,18 @@
         "method": "GET",
         "name": "shipmentEnvironmentsByBarge"
       }
+    },
+    {
+      "name": "shipmentEnvironmentsByGroup",
+      "type": "JSON",
+      "settings": {
+        "url": "api/shipmentEnvironmentsByGroup",
+        "use_thingproxy": false,
+        "refresh": 3600,
+        "method": "GET",
+        "name": "shipmentEnvironmentsByGroup"
+      }
     }
   ],
-  "columns": 3
+  "columns": 4
 }

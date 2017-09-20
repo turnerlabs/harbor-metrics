@@ -7,17 +7,17 @@ import (
 	_ "github.com/lib/pq"
 )
 
-//ShipmentEnvironmentsByBargeResult ...
-type ShipmentEnvironmentsByBargeResult struct {
-	Barge string `json:"barge"`
+//ShipmentEnvironmentsByGroupResult ...
+type ShipmentEnvironmentsByGroupResult struct {
+	Group string `json:"group"`
 	Count int    `json:"count"`
 }
 
-func shipmentEnvironmentsByBarge(r *http.Request) *Response {
+func shipmentEnvironmentsByGroup(r *http.Request) *Response {
 
 	query := `
 select
-  "Providers".barge, count(*) as count
+  "Shipments".group, count(*) as count
 from
   "Providers",
   "Environments",
@@ -26,19 +26,21 @@ where
   "Providers"."environmentId" = "Environments".composite
   and "Environments"."shipmentId" = "Shipments"."name"
 group by 
-  "Providers".barge
+	"Shipments".group
+having
+  count(*) > 45
 order by 
   count(*) desc
 ;	
 `
-	var results []ShipmentEnvironmentsByBargeResult
+	var results []ShipmentEnvironmentsByGroupResult
 	err := dbQuery(query, func(rows *sql.Rows) {
-		var barge string
+		var group string
 		var count int
-		err := rows.Scan(&barge, &count)
+		err := rows.Scan(&group, &count)
 		check(err)
-		results = append(results, ShipmentEnvironmentsByBargeResult{
-			Barge: barge,
+		results = append(results, ShipmentEnvironmentsByGroupResult{
+			Group: group,
 			Count: count,
 		})
 	})
