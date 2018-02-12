@@ -24,7 +24,8 @@ from
   "Shipments"
 where
   "Providers"."environmentId" = "Environments".composite
-  and "Environments"."shipmentId" = "Shipments"."name"
+	and "Environments"."shipmentId" = "Shipments"."name"
+	and "Providers".barge NOT LIKE '%test%'
 group by 
 	"Shipments".group
 having
