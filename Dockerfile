@@ -23,6 +23,10 @@ RUN npm run build
 WORKDIR /go/src/github.com/turnerlabs/harbor-metrics/freeboard/widgets/shipmentEnvironmentsByGroup
 RUN npm install
 RUN npm run build
+
+WORKDIR /go/src/github.com/turnerlabs/harbor-metrics/freeboard/widgets/containerReplicasByBarge
+RUN npm install
+RUN npm run build
 ###
 
 

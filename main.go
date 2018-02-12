@@ -22,6 +22,7 @@ func main() {
 
 	mux.Handle("/api/shipmentEnvironmentsByBarge", log(Action(shipmentEnvironmentsByBarge)))
 	mux.Handle("/api/shipmentEnvironmentsByGroup", log(Action(shipmentEnvironmentsByGroup)))
+	mux.Handle("/api/containerReplicasByBarge", log(Action(containerReplicasByBarge)))
 
 	mux.Handle("/", log(http.FileServer(http.Dir("freeboard"))))
 

@@ -1,90 +1,126 @@
 {
-  "version": 1,
-  "allow_edit": true,
-  "plugins": [],
-  "panes": [
-    {
-      "title": "Barge Size",
-      "width": 1,
-      "row": {
-        "3": 1,
-        "4": 1,
-        "5": 13,
-        "6": 1
-      },
-      "col": {
-        "3": 1,
-        "4": 1,
-        "5": 1,
-        "6": 6
-      },
-      "col_width": 2,
-      "widgets": [
-        {
-          "title": "shipmentEnvironmentsByBarge",
-          "type": "jqPlotWidget",
-          "settings": {
-            "id": "shipmentEnvironmentsByBarge",
-            "data": "var result = [];\nresult[0] = [];\ndatasources[\"shipmentEnvironmentsByBarge\"].map(function(item) {\n  objArray = []\n  objArray.push(item.barge);\n  objArray.push(item.count);\n  result[0].push(objArray);\n});\nreturn result;",
-            "options": "return { \n  seriesDefaults: {\n    // Make this a pie chart.\n    renderer: $.jqplot.PieRenderer, \n    rendererOptions: {\n      // Put data labels on the pie slices.\n      // By default, labels show the percentage of the slice.\n      showDataLabels: true\n    }\n  }, \n  legend: { show: true, location: 'e' }\n};",
-            "chartHeight": 300,
-            "chartWidth": 600,
-            "height": 5
-          }
-        }
-      ]
-    },
-    {
-      "title": "Top 10 Groups",
-      "width": 2,
-      "row": {
-        "3": 1,
-        "4": 1
-      },
-      "col": {
-        "3": 3,
-        "4": 3
-      },
-      "col_width": "2",
-      "widgets": [
-        {
-          "title": "shipmentEnvironmentsByGroup",
-          "type": "jqPlotWidget",
-          "settings": {
-            "id": "shipmentEnvironmentsByGroup",
-            "data": "var result = [];\nresult[0] = [];\ndatasources[\"shipmentEnvironmentsByGroup\"].map(function(item) {\n  objArray = []\n  objArray.push(item.group);\n  objArray.push(item.count);\n  result[0].push(objArray);\n});\nreturn result;",
-            "options": "return { \n  seriesDefaults: {\n    // Make this a pie chart.\n    renderer: $.jqplot.PieRenderer, \n    rendererOptions: {\n      // Put data labels on the pie slices.\n      // By default, labels show the percentage of the slice.\n      showDataLabels: true\n    }\n  }, \n  legend: { show: true, location: 'e' }\n};",
-            "chartHeight": 300,
-            "chartWidth": 600,
-            "height": 5
-          }
-        }
-      ]
-    }
-  ],
-  "datasources": [
-    {
-      "name": "shipmentEnvironmentsByBarge",
-      "type": "JSON",
-      "settings": {
-        "url": "api/shipmentEnvironmentsByBarge",
-        "use_thingproxy": false,
-        "refresh": 3600,
-        "method": "GET",
-        "name": "shipmentEnvironmentsByBarge"
-      }
-    },
-    {
-      "name": "shipmentEnvironmentsByGroup",
-      "type": "JSON",
-      "settings": {
-        "url": "api/shipmentEnvironmentsByGroup",
-        "use_thingproxy": false,
-        "refresh": 3600,
-        "method": "GET",
-        "name": "shipmentEnvironmentsByGroup"
-      }
-    }
-  ],
-  "columns": 4
+	"version": 1,
+	"allow_edit": true,
+	"plugins": [],
+	"panes": [
+		{
+			"title": "Barge Size",
+			"width": 1,
+			"row": {
+				"3": 1,
+				"4": 1,
+				"5": 13,
+				"6": 1
+			},
+			"col": {
+				"3": 1,
+				"4": 1,
+				"5": 1,
+				"6": 6
+			},
+			"col_width": 2,
+			"widgets": [
+				{
+					"title": "shipmentEnvironmentsByBarge",
+					"type": "jqPlotWidget",
+					"settings": {
+						"id": "shipmentEnvironmentsByBarge",
+						"data": "var result = [];\nresult[0] = [];\ndatasources[\"shipmentEnvironmentsByBarge\"].map(function(item) {\n  objArray = []\n  objArray.push(item.barge);\n  objArray.push(item.count);\n  result[0].push(objArray);\n});\nreturn result;",
+						"options": "return { \n  seriesDefaults: {\n    // Make this a pie chart.\n    renderer: $.jqplot.PieRenderer, \n    rendererOptions: {\n      // Put data labels on the pie slices.\n      // By default, labels show the percentage of the slice.\n      showDataLabels: true\n    }\n  }, \n  legend: { show: true, location: 'e' }\n};",
+						"chartHeight": 300,
+						"chartWidth": 600,
+						"height": 5
+					}
+				}
+			]
+		},
+		{
+			"title": "Top 10 Groups",
+			"width": 2,
+			"row": {
+				"3": 1,
+				"4": 1
+			},
+			"col": {
+				"3": 3,
+				"4": 3
+			},
+			"col_width": "2",
+			"widgets": [
+				{
+					"title": "shipmentEnvironmentsByGroup",
+					"type": "jqPlotWidget",
+					"settings": {
+						"id": "shipmentEnvironmentsByGroup",
+						"data": "var result = [];\nresult[0] = [];\ndatasources[\"shipmentEnvironmentsByGroup\"].map(function(item) {\n  objArray = []\n  objArray.push(item.group);\n  objArray.push(item.count);\n  result[0].push(objArray);\n});\nreturn result;",
+						"options": "return { \n  seriesDefaults: {\n    // Make this a pie chart.\n    renderer: $.jqplot.PieRenderer, \n    rendererOptions: {\n      // Put data labels on the pie slices.\n      // By default, labels show the percentage of the slice.\n      showDataLabels: true\n    }\n  }, \n  legend: { show: true, location: 'e' }\n};",
+						"chartHeight": 300,
+						"chartWidth": 600,
+						"height": 5
+					}
+				}
+			]
+		},
+		{
+			"title": "container replicas",
+			"width": 1,
+			"row": {
+				"4": 13
+			},
+			"col": {
+				"4": 3
+			},
+			"col_width": "2",
+			"widgets": [
+				{
+					"title": "containerReplicasByBarge",
+					"type": "jqPlotWidget",
+					"settings": {
+						"id": "containerReplicasByBarge",
+						"data": "var result = [];\nresult[0] = [];\ndatasources[\"containerReplicasByBarge\"].map(function(item) {\n  objArray = []\n  objArray.push(item.barge);\n  objArray.push(item.count);\n  result[0].push(objArray);\n});\nreturn result;",
+						"chartHeight": 300,
+						"chartWidth": 600,
+						"height": 5,
+						"options": "return { \n  seriesDefaults: {\n    // Make this a pie chart.\n    renderer: $.jqplot.PieRenderer, \n    rendererOptions: {\n      // Put data labels on the pie slices.\n      // By default, labels show the percentage of the slice.\n      showDataLabels: true\n    }\n  }, \n  legend: { show: true, location: 'e' }\n};"
+					}
+				}
+			]
+		}
+	],
+	"datasources": [
+		{
+			"name": "shipmentEnvironmentsByBarge",
+			"type": "JSON",
+			"settings": {
+				"url": "api/shipmentEnvironmentsByBarge",
+				"use_thingproxy": false,
+				"refresh": 3600,
+				"method": "GET",
+				"name": "shipmentEnvironmentsByBarge"
+			}
+		},
+		{
+			"name": "shipmentEnvironmentsByGroup",
+			"type": "JSON",
+			"settings": {
+				"url": "api/shipmentEnvironmentsByGroup",
+				"use_thingproxy": false,
+				"refresh": 3600,
+				"method": "GET",
+				"name": "shipmentEnvironmentsByGroup"
+			}
+		},
+		{
+			"name": "containerReplicasByBarge",
+			"type": "JSON",
+			"settings": {
+				"url": "api/containerReplicasByBarge",
+				"use_thingproxy": false,
+				"refresh": 3600,
+				"method": "GET",
+				"name": "containerReplicasByBarge"
+			}
+		}
+	],
+	"columns": 4
 }
